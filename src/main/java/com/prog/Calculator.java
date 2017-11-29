@@ -3,29 +3,33 @@ package com.prog;
 import java.awt.Color;
 import javax.swing.*;
 /**
- * @author Pustovit V.V.
+ * Кдасс графического интервейса
  */
 public class Calculator {
     public static void main(String[] args) {
         Calculator  call = new  Calculator ();
     }
 
-    private final Color red=new Color(255,0,0);
-    private final Color white=new Color(255,255,255);
+    private static final Color red = new Color(255,0,0);
+    private static final Color white = new Color(255,255,255);
 
-    private JLabel labelA = new JLabel("Делимое А:");
-    private JLabel errorA = new JLabel("");
-    private JTextField fieldA = new JTextField(10);
-    private JLabel labelB = new JLabel("Делитель В:");
-    private JLabel errorB = new JLabel("");
-    private JTextField fieldB = new JTextField(10);
-    private JButton button1 = new JButton("=");
-    private JLabel labelC = new JLabel("Частное С:");
-    private JTextField fieldC = new JTextField(10);
+    private static JLabel labelA = new JLabel("Делимое А:");
+    private static JLabel errorA = new JLabel("");
+    private static JTextField fieldA = new JTextField(10);
 
-    private JPanel windowContent = new JPanel();
+    private static JLabel labelB = new JLabel("Делитель В:");
+    private static JLabel errorB = new JLabel("");
+    private static JTextField fieldB = new JTextField(10);
 
-    CalculatorEngine  calcEng  = new CalculatorEngine ( this );
+    private static JButton button1 = new JButton("=");
+
+    private static JLabel labelC = new JLabel("Частное С:");
+    private static JTextField fieldC = new JTextField(10);
+
+    private static JFrame frame = new JFrame("Калькулятор");
+    private static JPanel windowContent = new JPanel();
+
+    CalculatorEngine  calcEng = new CalculatorEngine ();
 
     public  Calculator (){
         windowContent.setLayout(null);
@@ -52,31 +56,30 @@ public class Calculator {
         labelC.setBounds(30, 125,90, 40);
 
         windowContent.add(fieldC);
-        fieldC.setBounds(100, 125, 250, 40);
+        fieldC.setBounds(100, 125, 140, 40);
 
         windowContent.add(button1);
-        button1.setBounds(100,175,250,60);
+        button1.setBounds(100,175,140,60);
         button1.addActionListener(calcEng);
 
-        JFrame frame = new JFrame("Калькулятор");
         frame.setContentPane(windowContent);
-        frame.setSize(465,300);
+        frame.setSize(350,300);
         frame.setVisible(true);
     }
 
-    public String getValueA(){
+    public static String getValueA(){
         return fieldA.getText();
     }
 
-    public String getValueB(){
+    public static String getValueB(){
         return fieldB.getText();
     }
 
-    public void setValueC(String valueC){
+    public static void setValueC(String valueC){
         fieldC.setText(valueC);
     }
 
-    public void makeBackgrounRed(String fieldNameAorB){
+    public static void makeBackgrounRed(String fieldNameAorB){
         if (fieldNameAorB.equals("A")){
             fieldA.setBackground(red);
         }   else {
@@ -84,7 +87,7 @@ public class Calculator {
         }
     }
 
-    public void makeBackgrounWhite(String fieldNameAorB){
+    public static void makeBackgrounWhite(String fieldNameAorB){
         if (fieldNameAorB.equals("A")){
             fieldA.setBackground(white);
         }   else {
@@ -92,36 +95,41 @@ public class Calculator {
         }
     }
 
-    public void setErrorLabel(String wrongFieldAorB, String error){
+    public static void setErrorLabel(String wrongFieldAorB, String error){
         if(wrongFieldAorB.equals("A")){
             errorA.setText(error);
         }   else{
             errorB.setText(error);
         }
     }
+
+    public static void errorSizeFrame() { frame.setSize(490,300); }
+
+    public static void normalSizeFrame(){ frame.setSize(350,300); }
+
     // Методы ниже написаны специально для тестов
-    public void setValueA(String valueA){
+    public static void setValueA(String valueA){
         fieldA.setText(valueA);
     }
 
-    public void setValueB(String valueB){
+    public static void setValueB(String valueB){
         fieldB.setText(valueB);
     }
 
-    public String getValueC(){
+    public static String getValueC(){
         return fieldC.getText();
     }
 
-    public void clickButton(){
+    public static void clickButton(){
         button1.doClick();
     }
 
-    public Color getColorFieldA(){ return fieldA.getBackground(); }
+    public static Color getColorFieldA(){ return fieldA.getBackground(); }
 
-    public Color getColorFieldB(){ return fieldB.getBackground(); }
+    public static Color getColorFieldB(){ return fieldB.getBackground(); }
 
-    public String getTextErrorA() {return errorA.getText();}
+    public static String getTextErrorA() {return errorA.getText();}
 
-    public String getTextErrorB() {return errorB.getText();}
+    public static String getTextErrorB() {return errorB.getText();}
 
 }

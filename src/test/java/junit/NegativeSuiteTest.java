@@ -1,17 +1,16 @@
 package junit;
 
 import com.prog.Calculator;
+import com.prog.CalculatorEngine;
 import org.junit.After;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import java.awt.Color;
 /**
- * @author Pustovit V.V.
+ * Тесты по негативному сценарию
  */
-public class NegativeTestSuite {
+public class NegativeSuiteTest {
 
-    private Calculator calc = new Calculator();
     private Color red=new Color(255,0,0);
     private Color white=new Color(255,255,255);
 
@@ -28,41 +27,29 @@ public class NegativeTestSuite {
 
 
     public void methodForTestA(String [] array){
-        calc.setValueA(array[0]);
-        calc.setValueB(array[1]);
-        calc.clickButton();
-        Assert.assertEquals(calc.getTextErrorA(),array[2]);
-        Assert.assertEquals(calc.getColorFieldA(), red);
+        CalculatorEngine.division(array[0],array[1]);
+        Assert.assertEquals(array[2], Calculator.getTextErrorA());
+        Assert.assertEquals(red, Calculator.getColorFieldA());
     }
 
     public void methodForTestB(String [] array){
-        calc.setValueA(array[0]);
-        calc.setValueB(array[1]);
-        calc.clickButton();
-        Assert.assertEquals(calc.getTextErrorB(),array[2]);
-        Assert.assertEquals(calc.getColorFieldB(), red);
+        CalculatorEngine.division(array[0],array[1]);
+        Assert.assertEquals(array[2], Calculator.getTextErrorB());
+        Assert.assertEquals(red, Calculator.getColorFieldB());
     }
 
     public void methodAfterCorrectionA(String [] array){
-        calc.setValueA(array[0]);
-        calc.setValueB(array[1]);
-        calc.clickButton();
-        calc.setValueA("1");
-        calc.setValueB("1");
-        calc.clickButton();
-        Assert.assertEquals(calc.getTextErrorA(),"");
-        Assert.assertEquals(calc.getColorFieldB(), white);
+        CalculatorEngine.division(array[0],array[1]);
+        CalculatorEngine.division("1","1");
+        Assert.assertEquals("",Calculator.getTextErrorA());
+        Assert.assertEquals(white,Calculator.getColorFieldB());
     }
 
     public void methodAfterCorrectionB(String [] array){
-        calc.setValueA(array[0]);
-        calc.setValueB(array[1]);
-        calc.clickButton();
-        calc.setValueA("1");
-        calc.setValueB("1");
-        calc.clickButton();
-        Assert.assertEquals(calc.getTextErrorB(),"");
-        Assert.assertEquals(calc.getColorFieldB(), white);
+        CalculatorEngine.division(array[0],array[1]);
+        CalculatorEngine.division("1","1");
+        Assert.assertEquals("",Calculator.getTextErrorB());
+        Assert.assertEquals(white, Calculator.getColorFieldB());
     }
 
 
@@ -110,7 +97,6 @@ public class NegativeTestSuite {
 
     @After
     public void clear() {
-        calc = null;
         red = null;
         white = null;
         forTest1 = null;

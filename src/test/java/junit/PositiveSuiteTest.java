@@ -1,14 +1,14 @@
 package junit;
-
-import com.prog.Calculator;
+/**
+ * Тесты по позитивному сценарию
+ */
+import com.prog.CalculatorEngine;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
-/**
- * @author Pustovit V.V.
- */
-public class PositiveTestSuite {
-   private Calculator calc = new Calculator();
+
+public class PositiveSuiteTest {
+
     //Структура массивов {делимое А, делитель Б, ожидаемый результат частное С}
     private String forTest1 [] = {"24.75", "4.5", "5.5"};
     private String forTest2 [] = {"24.75", "-4.5", "-5.5"};
@@ -31,9 +31,12 @@ public class PositiveTestSuite {
     private String forTest16 [] = {"-45", "-3", "15.0"};
 
     private String forTest17 [] = {"0", "4.5", "0.0"};
-    private String forTest18 [] = {"0", "-4.5", "0.0"};// Благодаря тестам posTest018 и posTest020 БЫЛ найден БАГ!
-    private String forTest19 [] = {"0", "3", "0.0"};   // Фактический результат -0.0, ожидаемый 0.0. Был добавлен фикс
-    private String forTest20 [] = {"0", "-3", "0.0"};  // в классе CalculatorEngine, стр.76 if(a==0){return 0.0;}
+
+    // Благодаря тестам posTest018 и posTest020 БЫЛ найден БАГ!
+    // Фактический результат -0.0, ожидаемый 0.0. был добавлен фикс
+    private String forTest18 [] = {"0", "-4.5", "0.0"};
+    private String forTest19 [] = {"0", "3", "0.0"};
+    private String forTest20 [] = {"0", "-3", "0.0"};
 
     private String forTest21 [] = {"1.0e7", "1.0e7", "1.0"};
     private String forTest22 [] = {"1.0e7", "-1.0e7", "-1.0"};
@@ -56,10 +59,7 @@ public class PositiveTestSuite {
     private String forTest36 [] = {"-1.0E7", "-1.0E7", "1.0"};
 
     public void methodForTest(String [] array){
-        calc.setValueA(array[0]);
-        calc.setValueB(array[1]);
-        calc.clickButton();
-        Assert.assertEquals(calc.getValueC(),array[2]);
+     Assert.assertEquals(array[2],CalculatorEngine.division(array[0],array[1]));
     }
 
     @Test
@@ -137,15 +137,41 @@ public class PositiveTestSuite {
 
     @After
     public void clear(){
-        calc=null;
-        forTest1=null; forTest2=null; forTest3=null; forTest4=null;
-        forTest5=null; forTest6=null; forTest7=null; forTest8=null;
-        forTest9=null; forTest10=null; forTest11=null; forTest12=null;
-        forTest13=null; forTest14=null; forTest15=null; forTest16=null;
-        forTest17=null; forTest18=null; forTest19=null; forTest20=null;
-        forTest21=null; forTest22=null; forTest23=null; forTest24=null;
-        forTest25=null; forTest26=null; forTest27=null; forTest28=null;
-        forTest29=null; forTest30=null; forTest31=null; forTest32=null;
-        forTest33=null; forTest34=null; forTest35=null; forTest36=null;
+        forTest1 = null;
+        forTest2 = null;
+        forTest3 = null;
+        forTest4 = null;
+        forTest5 = null;
+        forTest6 = null;
+        forTest7 = null;
+        forTest8 = null;
+        forTest9 = null;
+        forTest10 = null;
+        forTest11 = null;
+        forTest12 = null;
+        forTest13 = null;
+        forTest14 = null;
+        forTest15 = null;
+        forTest16 = null;
+        forTest17 = null;
+        forTest18 = null;
+        forTest19 = null;
+        forTest20 = null;
+        forTest21 = null;
+        forTest22 = null;
+        forTest23 = null;
+        forTest24 = null;
+        forTest25 = null;
+        forTest26 = null;
+        forTest27 = null;
+        forTest28 = null;
+        forTest29 = null;
+        forTest30 = null;
+        forTest31 = null;
+        forTest32 = null;
+        forTest33 = null;
+        forTest34 = null;
+        forTest35 = null;
+        forTest36 = null;
     }
 }

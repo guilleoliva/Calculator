@@ -1,41 +1,27 @@
 package cucumber.steps;
-
+/**
+ * Класс шагов для теста
+ */
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import org.junit.Assert;
 import com.prog.Calculator;
-/**
- * @author Pustovit V.V.
- */
+import com.prog.CalculatorEngine;
+
 public class CucumberSteps {
-    private Calculator calc;
 
-    @Given("^Пользователь запускает калькулятор$")
-            public void startCalculator(){
-            calc = new Calculator(); }
-
-
-    @Then("^Вводит корректные данные в поле «Делимое А:» '(.+)'$")
+    @Given("^Вводит корректные данные в поле «Делимое А:» '(.+)'$")
     public void inputA(String inputA) {
-                calc.setValueA(inputA);
+                Calculator.setValueA(inputA);
     }
 
     @And("^Вводит корректные данные в поле «Делитель В:» '(.+)'$")
     public void inputB(String inputB) {
-        calc.setValueB(inputB);
+        Calculator.setValueB(inputB);
     }
 
-
-    @And("^Нажимает на кнопку «=»$")
-    public void Btn(){
-                calc.clickButton();
-    }
-
-
-    @Then("^Он видит результат деления '(.+)'$")
+    @And("^Нажимает на кнопку «=» и видит результат деления '(.+)'$")
     public void result(String expectedResult) {
-        System.out.print(calc.getValueC());
-        Assert.assertEquals(expectedResult,calc.getValueC());
+        Assert.assertEquals(expectedResult, CalculatorEngine.division(Calculator.getValueA(), Calculator.getValueB()));
     }
 }
