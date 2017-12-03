@@ -2,6 +2,7 @@ package cucumber;
 /**
  * Класс запуска cucumber тестов
  */
+
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
@@ -12,4 +13,5 @@ import org.junit.runner.RunWith;
         glue = "cucumber.steps"
 )
 
-public class CucumberRunner {}
+public class CucumberRunner {
+}
