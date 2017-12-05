@@ -5,8 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-import static com.prog.CalculatorEngine.division;
-
 /**
  * Класс графического интерфейса.
  */
@@ -30,6 +28,7 @@ public class Calculator {
 
     private JLabel labelC = new JLabel("Частное С:");
     private static JTextField fieldC = new JTextField(10);
+
 
     private static JFrame frame = new JFrame("Калькулятор");
     private JPanel windowContent = new JPanel();
@@ -62,6 +61,7 @@ public class Calculator {
 
         windowContent.add(fieldC);
         fieldC.setBounds(100, 125, 140, 40);
+        fieldC.setEditable(false);
 
         windowContent.add(button1);
         button1.setBounds(100, 175, 140, 60);

@@ -25,13 +25,8 @@ public class CalculatorEngine {
 
         //Отлавливаем исключение ArithmeticException(в нашем случае деление на 0)
         if (b == 0.0) {
-            Integer valueAToInt = Integer.parseInt(valueA);
-            Integer valueBToInt = Integer.parseInt(valueB);
-            try {
-                int res = valueAToInt / valueBToInt;
-            } catch (ArithmeticException e) {
-                throw e;
-            }
+            ArithmeticException e = new ArithmeticException();
+            throw e;
         }
         // фикс после найденого бага благодаря тестам posTest018, posTest020.
         if (a == 0) {
